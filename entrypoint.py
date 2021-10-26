@@ -4,21 +4,21 @@ import os
 import sys
 import argparse
 import warnings
-from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 
 from func import run
 
 warnings.filterwarnings('ignore')
 
 
-def sys_path():
-    path = os.path.join(os.getcwd(), 'phantomjs', 'bin')
+def sys_path(browser):
+    path = f'./{browser}/bin/'
     if sys.platform.startswith('win'):
-        return os.path.join(path, 'phantomjs.exe')
+        return path + f'{browser}.exe'
     elif sys.platform.startswith('linux'):
-        return os.path.join(path, 'phantomjs-linux')
+        return path + f'{browser}'
     elif sys.platform.startswith('darwin'):
-        return os.path.join(path, 'phantomjs')
+        return path + f'{browser}'
     else:
         raise Exception('暂不支持该系统')
 
@@ -39,11 +39,12 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     print('Driver Launching...')
-    assert os.path.isfile(sys_path())
-    driver_pjs = webdriver.PhantomJS(
-        executable_path=sys_path(),
-        service_args=['--ignore-ssl-errors=true', '--ssl-protocol=TLSv1'],
-    )
+    chrome_options = Options()
+    chrome_options.add_argument("--headless")
+    driver_pjs = webdriver.Chrome(
+            options=chrome_options,
+            executable_path=sys_path(browser="chromedriver"),
+            service_args=['--ignore-ssl-errors=true', '--ssl-protocol=TLSv1'])
     print('Driver Launched\n')
 
     run(driver_pjs, args.username, args.password, args.campus, args.reason,
