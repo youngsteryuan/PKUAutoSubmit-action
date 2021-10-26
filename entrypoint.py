@@ -5,6 +5,7 @@ import sys
 import argparse
 import warnings
 from selenium.webdriver.chrome.options import Options
+from selenium import webdriver
 
 from func import run
 
