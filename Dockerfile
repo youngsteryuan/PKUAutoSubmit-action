@@ -5,6 +5,6 @@ RUN git clone https://github.com/Bruuuuuuce/PKUAutoSubmit.git /PKUAutoSubmit
 
 COPY entrypoint.sh /entrypoint.sh
 COPY entrypoint.py /PKUAutoSubmit/entrypoint.py
-COPY phantomjs-linux /PKUAutoSubmit/phantomjs/bin/phantomjs-linux
+COPY chromedriver /PKUAutoSubmit/chromedriver/bin/chromedriver
 
 ENTRYPOINT [ "/entrypoint.sh" ]
