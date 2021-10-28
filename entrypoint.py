@@ -4,7 +4,7 @@ import os
 import sys
 import argparse
 import warnings
-from selenium.Edge.chrome.options import Options
+from selenium.webdriver.Edge.options import Options
 from selenium import webdriver
 
 from func import run
