@@ -44,7 +44,7 @@ if __name__ == '__main__':
     chrome_options.add_argument("--headless")
     driver_pjs = webdriver.Chrome(
             options=chrome_options,
-            executable_path=sys_path(browser="chromedriver"),
+            executable_path="C:\Program Files\Google\Chrome\Application\chromedriver.exe",
             service_args=['--ignore-ssl-errors=true', '--ssl-protocol=TLSv1'])
     print('Driver Launched\n')
 
