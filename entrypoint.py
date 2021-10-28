@@ -4,7 +4,7 @@ import os
 import sys
 import argparse
 import warnings
-from selenium.webdriver.chrome.options import Options
+from selenium.Edge.chrome.options import Options
 from selenium import webdriver
 
 from func import run
@@ -42,9 +42,9 @@ if __name__ == '__main__':
     print('Driver Launching...')
     chrome_options = Options()
     chrome_options.add_argument("--headless")
-    driver_pjs = webdriver.Chrome(
+    driver_pjs = webdriver.Edge(
             options=chrome_options,
-            executable_path=sys_path(browser="chromedriver"),
+            executable_path=sys_path(browser="msedgedriver"),
             service_args=['--ignore-ssl-errors=true', '--ssl-protocol=TLSv1'])
     print('Driver Launched\n')
 
